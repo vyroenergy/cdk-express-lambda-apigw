@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: carma-data-integration-app
+  contact:
+    email: engineering@vyro.co
+  version: 1.0.0
+paths:
+  /inventory/upload:
+    post:
+      description: Uploads a CSV file of inventory for processing. The CSV file will be considered the source of truth for all inventory data. Listings that are not in the CSV file will be de-listed. Processing is conducted asynchronously.
+      operationId: uploadInventory
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+              required:
+                - file
+      responses:
+        201:
+          description: File uploaded successfully. Listings will be processed in the background. Processing normally takes a matter of minutes, depending on load.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: File uploaded successfully
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/NotAuthenticated"
+        403:
+          $ref: "#/components/responses/NotAuthorised"
+
+components:
+  responses:
+    BadRequest:
+      description: The request body is invalid
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotAuthenticated:
+      description: The user is not authenticated
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotAuthorised:
+      description: The user is not authorised to perform this action
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        details:
+          type: string
+          nullable: true

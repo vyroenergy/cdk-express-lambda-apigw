@@ -1,0 +1,12 @@
+{
+  "name": "cdk-express-lambda-apigw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "cd cdk && npx cdk deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
