@@ -1,4 +1,4 @@
-# Free template for an Express API, using TypeScript, that runs entirely on AWS Lambda.
+# CDK Template - Express API, using TypeScript, that runs entirely on AWS Lambda.
 
 > This our go-to API pattern at Vyro. It's practically free to run, scales like there is no tomorrow, and has a deploy time of around ~30s. Distributed freely under a [CC0 license](./LICENSE.txt).
 
