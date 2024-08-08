@@ -2,6 +2,12 @@
 
 > This our go-to API pattern at Vyro. It's practically free to run, scales like there is no tomorrow, and has a deploy time of around ~30s. Distributed freely under a [CC0 license](./LICENSE.txt).
 
+## Pre-reqs
+
+- Node.js, recommend version 20 or above. Lower versions are probably fine.
+- PNPM, or NPM, or Yarn. We've used PNPM but adjust accordingly.
+- AWS Account with local CLI access
+
 ## Local development
 
 The API runs locally like so:
@@ -18,7 +24,7 @@ pnpm run dev
 
 ### Pre-reqs
 
-First things first, make sure you have an AWS account and have local CLI access to deploy to it. Google can walk you through this. You should be able to do something like `aws s3 ls` and see a list of S3 buckets in your account.
+Make sure you have an AWS account and have local CLI access to deploy to it. Google can walk you through this. You should be able to do something like `aws s3 ls` and see a list of S3 buckets in your account.
 
 ```
 pnpm i
@@ -47,3 +53,9 @@ curl {{endpoint from above}}foo
 ![](./screenshots/curl.png)
 
 That's it. Enjoy.
+
+## Destroying
+
+```
+pnpm run destroy
+```
