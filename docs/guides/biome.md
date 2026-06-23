@@ -7,16 +7,13 @@ configuration rolled out in `core`.
 ## Commands
 
 ```bash
-pnpm biome          # check formatting + imports + lint, no writes (what CI runs)
+pnpm biome          # check formatting + imports + lint, no writes
 pnpm biome:fix      # apply safe fixes (format + organise imports + safe lint)
 pnpm lint           # biome lint .
 pnpm lint:fix       # biome lint --write .
 pnpm format         # format only, write in place
 pnpm format:check   # format check only, no writes
 ```
-
-CI runs `biome ci .` via [`.github/workflows/biome.yml`](../../.github/workflows/biome.yml)
-on every PR, using the official `biomejs/setup-biome` action (no install needed).
 
 ## Config
 
@@ -27,9 +24,8 @@ Promote `warn` rules to `error` as the codebase is cleaned up.
 
 ## ⚠️ This PR does not reformat the codebase
 
-This migration adds the Biome config + CI and removes ESLint/Prettier, but it does **not**
-run Biome's auto-fix. CI (`biome ci .`) will fail until the code is formatted. To make it
-green, run locally and commit the result:
+This migration adds the Biome config and removes ESLint/Prettier, but it does **not** run
+Biome's auto-fix. Run it locally and commit the result:
 
 ```bash
 pnpm install
