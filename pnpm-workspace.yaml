@@ -1,3 +1,6 @@
 packages:
   - "api"
   - "cdk"
+allowBuilds:
+  aws-sdk: true
+  esbuild: true
